@@ -63,3 +63,5 @@
 $("button").on("click", function () {
   $("h1").slideUp().slideDown().animate({ opacity: 0.5 });
 });
+// Select the button with the same ID as randomChosenColour
+var button = $('#' + randomChosenColour);
