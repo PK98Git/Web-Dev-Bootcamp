@@ -12,8 +12,10 @@ app.get("/", (req, res) => {
   console.log(__dirname)
 });
 
-app.use(bodyParser.urlencoded({extended:true}));
 
+//use this to pass encoded type data through the url
+app.use(bodyParser.urlencoded({extended:true}));
+//Create Post request to submit the data
 app.post("/submit",(req,res)=>{
   console.log(req.body)
 })
