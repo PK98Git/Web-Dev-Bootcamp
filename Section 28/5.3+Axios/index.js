@@ -45,29 +45,24 @@ app.post("/", async (req, res) => {
       );
       result = response.data;
       random = Math.round(Math.random() * response.data.length);
-      //console.log(random);
-      //console.log(response.data.length)
+
       res.render("index.ejs", { data: result[random] });
     } else if (req.body.type) {
-      console.log("type only");
       response = await axios.get(
         "https://bored-api.appbrewery.com/filter?type=" + req.body.type
       );
       result = response.data;
       random = Math.round(Math.random() * response.data.length);
-      //console.log(random);
-      //console.log(response.data.length)
+
       res.render("index.ejs", { data: result[random] });
     } else if (req.body.participants) {
-      console.log("Participants only");
       response = await axios.get(
         "https://bored-api.appbrewery.com/filter?participants=" +
           req.body.participants
       );
       result = response.data;
       random = Math.round(Math.random() * response.data.length);
-      //console.log(random);
-      //console.log(response.data.length)
+
       res.render("index.ejs", { data: result[random] });
     } else {
       console.log("Random");
@@ -75,12 +70,10 @@ app.post("/", async (req, res) => {
       res.render("index.ejs", { data: response.data });
     }
   } catch (error) {
-    //console.error("Failed to make request:", error.message);
-    console.log("error Message", error);
-    // if (error.response.status)
-    //   res.render("index.ejs", {
-    //     error: error
-    //   });
+    console.error("Failed to make request:", error.message);
+    res.render("solution.ejs", {
+      error: "No activities that match your criteria.",
+    });
   }
 
   // Step 2: Play around with the drop downs and see what gets logged.

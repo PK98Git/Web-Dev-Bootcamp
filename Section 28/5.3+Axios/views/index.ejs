@@ -57,11 +57,12 @@
       </article>
       <% } %>
 
+      <% if(locals.error) {%>
       <div id="tag-error" class="tag-error">
         <!-- Show any errors that were sent from the backend -->
         <h4><%= error %></h4>
       </div>
-
+      <% } %>
     </section>
   </div>
 
