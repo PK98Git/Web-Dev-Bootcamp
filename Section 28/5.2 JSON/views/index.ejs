@@ -21,11 +21,11 @@
     <h2 id="nameHeading"><%= recipe.name %></h2>
     <h3>Ingredients:</h3>
     <ul id="ingredientsList">
-      <li><%= recipe.ingredients["protein"].name %>,<%= recipe.ingredients["protein"].preparation %></li>
-      <li><%= recipe.ingredients["salsa"].name %></li>
-      <% for(let i=0;i<recipe.ingredients.toppings.length;i++){ %>
-      <li><%= recipe.ingredients.toppings[i].quantity %> of <%= recipe.ingredients.toppings[i].name %></li>
-      <% } %>
+      <li><%= recipe.ingredients.protein.name %>,<%= recipe.ingredients.protein.preparation %></li>
+      <li><%= recipe.ingredients.salsa.name %></li>
+      <% recipe.ingredients.toppings.forEach(topping => {%>
+      <li><%= topping.quantity %> of <%= topping.name %></li>
+      <% }) %>
     </ul>
     <% }else{ %>
       <!-- If no recipe yet, show: -->
