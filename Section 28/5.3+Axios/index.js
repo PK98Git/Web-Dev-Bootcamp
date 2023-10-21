@@ -60,8 +60,19 @@ app.post("/", async (req, res) => {
       res.render("index.ejs", { data: result[random] });
     } else if (req.body.participants) {
       console.log("Participants only");
+      response = await axios.get(
+        "https://bored-api.appbrewery.com/filter?participants=" +
+          req.body.participants
+      );
+      result = response.data;
+      random = Math.round(Math.random() * response.data.length);
+      //console.log(random);
+      //console.log(response.data.length)
+      res.render("index.ejs", { data: result[random] });
     } else {
       console.log("Random");
+      response = await axios.get("https://bored-api.appbrewery.com/random");
+      res.render("index.ejs", { data: response.data });
     }
   } catch (error) {
     //console.error("Failed to make request:", error.message);
