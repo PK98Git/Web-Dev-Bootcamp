@@ -11,7 +11,7 @@ const recipeJSON =
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-let recipe = [];
+let recipe ;
 app.get("/", (req, res) => {
   res.render("index.ejs",{recipe:recipe});
 });
@@ -31,7 +31,7 @@ app.post("/recipe", (req, res) => {
         break;
     }
     
-  //res.render("index.ejs");
+  res.redirect("/");
   //Step 3: Write your code here to make this behave like the solution website.
   //Step 4: Add code to views/index.ejs to use the recieved recipe object.
 });
