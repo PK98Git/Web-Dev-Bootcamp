@@ -24,8 +24,8 @@ app.get("/noAuth", async (req, res) => {
 
   const response = await axios.get(API_URL + "/random");
 
-  content = JSON.stringify(response);
-  res.render("index.ejs", { content: content });
+
+  res.render("index.ejs", { content: JSON.stringify(response) });
 });
 
 app.get("/basicAuth", async (req, res) => {
@@ -52,7 +52,7 @@ app.get("/basicAuth", async (req, res) => {
      }
    );
 
-   console.log(content);
+  
    res.render("index.ejs", { content: JSON.stringify(response.data) });
  } catch (error) {
    res.status(404).send(error.message);
