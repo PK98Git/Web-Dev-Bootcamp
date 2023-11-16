@@ -6,10 +6,10 @@ const port = 3000;
 const API_URL = "https://secrets-api.appbrewery.com/";
 
 //TODO 1: Fill in your values for the 3 types of auth.
-const yourUsername = "qwer1234";
-const yourPassword = "1234";
-const yourAPIKey = "5ee864d0-b15a-4d70-8ee3-06536670dc16";
-const yourBearerToken = "13b56149-e365-454a-abe9-197376406807";
+const yourUsername = "userbbb";
+const yourPassword = "userbbb";
+const yourAPIKey = "2cfbc4a9-43bd-416a-8ae8-d5f28eea014";
+const yourBearerToken = "3b8a3871-5430-41a8-b00e-0a2dc004bc55";
 
 let content;
 
@@ -22,10 +22,10 @@ app.get("/noAuth", async (req, res) => {
   //The data you get back should be sent to the ejs file as "content"
   //Hint: make sure you use JSON.stringify to turn the JS object from axios into a string.
 
-  const response = await axios.get(API_URL + "/random");
+  const response = await axios.get("https://secrets-api.appbrewery.com/random");
+  //console.log("hi")
 
-
-  res.render("index.ejs", { content: JSON.stringify(response) });
+  res.render("index.ejs", { content: JSON.stringify(response.data) });
 });
 
 app.get("/basicAuth", async (req, res) => {
@@ -42,18 +42,17 @@ app.get("/basicAuth", async (req, res) => {
     });
   */
  try {
-   const response = await axios.get(
-     API_URL+"all?page=2",
-     {
-       auth: {
-         username: "qwer1234",
-         password: "1234",
-       },
-     }
-   );
+   const response = await axios.get(API_URL + "all?page=2", {
+     auth: {
+       username: "userbbb",
+       password: "userbbb",
+     },
+   });
 
   
    res.render("index.ejs", { content: JSON.stringify(response.data) });
+
+  console.log("hi")
  } catch (error) {
    res.status(404).send(error.message);
  }
